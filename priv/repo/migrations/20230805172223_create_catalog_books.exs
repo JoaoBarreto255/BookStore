@@ -28,6 +28,7 @@ defmodule BookStore.Repo.Migrations.CreateCatalogBooks do
       add :book_id, references(:catalog_books)
       add :author_id, references(:catalog_authors)
       add :review, :text
+      add :is_cover_review, :boolean
     end
 
     create unique_index(:catalog_books, [:isbn])
