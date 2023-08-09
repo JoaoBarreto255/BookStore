@@ -15,7 +15,6 @@ defmodule BookStore.Repo.Migrations.CreateCatalogBooks do
       add :title, :string
       add :isbn, :string
       add :synopsis, :text, null: true
-      add :recommendation, :text
       add :published_at, :date
       add :min_age, :integer
     end
