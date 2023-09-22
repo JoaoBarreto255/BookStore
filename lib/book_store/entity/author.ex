@@ -3,6 +3,8 @@ defmodule BookStore.Entity.Author do
   import Ecto.Changeset
   import BookStore.Utils.UtilValidators
 
+  alias BookStore.Entity.Book
+
   @fields [:name, :origin, :bio, :photo, :born_at, :died_at]
   @rec_fields [:name, :origin, :bio, :photo, :born_at]
 
@@ -13,6 +15,8 @@ defmodule BookStore.Entity.Author do
     field :photo, :string
     field :born_at, :date
     field :died_at, :date
+
+    many_to_many :books, Book, join_through: "catalog_book_authors"
   end
 
   def changeset(author, params \\ %{}) do

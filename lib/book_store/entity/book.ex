@@ -3,6 +3,8 @@ defmodule BookStore.Entity.Book do
   import Ecto.Changeset
   import BookStore.Utils.DocIdValidators
 
+  alias BookStore.Entity.Author
+
   @fields [:title, :isbn, :synopsis, :published_at, :min_age]
   @req_fields [:title, :isbn, :published_at, :min_age]
 
@@ -12,6 +14,8 @@ defmodule BookStore.Entity.Book do
     field :synopsis, :string
     field :published_at, :date
     field :min_age, :integer
+
+    many_to_many :authors, Author, join_through: "catalog_book_authors"
 
     timestamps()
   end
