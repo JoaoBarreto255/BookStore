@@ -4,6 +4,7 @@ defmodule BookStore.Entity.Author do
   import BookStore.Utils.UtilValidators
 
   alias BookStore.Entity.Book
+  alias BookStore.Entity.BookReview
 
   @fields [:name, :origin, :bio, :photo, :born_at, :died_at]
   @rec_fields [:name, :origin, :bio, :photo, :born_at]
@@ -17,6 +18,7 @@ defmodule BookStore.Entity.Author do
     field :died_at, :date
 
     many_to_many :books, Book, join_through: "catalog_book_authors"
+    has_many :book_reviews, BookReview
   end
 
   def changeset(author, params \\ %{}) do

@@ -4,6 +4,7 @@ defmodule BookStore.Entity.Book do
   import BookStore.Utils.DocIdValidators
 
   alias BookStore.Entity.Author
+  alias BookStore.Entity.BookReview
 
   @fields [:title, :isbn, :synopsis, :published_at, :min_age]
   @req_fields [:title, :isbn, :published_at, :min_age]
@@ -16,6 +17,7 @@ defmodule BookStore.Entity.Book do
     field :min_age, :integer
 
     many_to_many :authors, Author, join_through: "catalog_book_authors"
+    has_many :book_reviews, BookReview
 
     timestamps()
   end
